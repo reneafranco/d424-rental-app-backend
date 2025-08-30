@@ -59,7 +59,10 @@ public class BeansConfig {
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         final CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.setAllowedOrigins(List.of("http://localhost:4200", "http://localhost:8080","https://d424-rental-app-fronted.vercel.app"
+        config.setAllowedOrigins(List.of("http://localhost:4200",
+                "http://localhost:8080","https://d424-rental-app-fronted.vercel.app",
+                "https://rentalequipmentapp.org",
+                "https://www.rentalequipmentapp.org"
         ));
         config.setAllowedHeaders(Arrays.asList(
                 HttpHeaders.ORIGIN,

@@ -36,7 +36,7 @@ application:
       secret-key: zFeN7VFm3Lq6asqS4MbpH8D7vlfu7gO9cuvZmxkax5aW1J4u4Ko5V6zQGkF1EY6u
       expiration: 86400000
 server:
-  port: 8088
+  port: 80
 
 mailing:
   frontend:
