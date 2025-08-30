@@ -30,7 +30,7 @@ services:
       context: ./backend/rental-equipment-app
       dockerfile: Dockerfile
     ports:
-      - "8080:8080"
+      - "80:8080"
     networks:
       - spring-demo
     restart: unless-stopped
