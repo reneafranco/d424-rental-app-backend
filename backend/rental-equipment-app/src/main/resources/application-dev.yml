@@ -13,20 +13,21 @@ spring:
         format_sql: true
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
-mail:
-  host: smtp.gmail.com
-  port: 587
-  username: reneadonayfranco@gmail.com
-  password:
-  properties:
-    mail.smtp.auth: true
-    mail.smtp.starttls.enable: true
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: reneadonayfranco@gmail.com
+    password: T
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
 
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: "http://localhost:9090/realms/rental-equipment-app"
+security:
+  oauth2:
+    resourceserver:
+      jwt:
+        issuer-uri: "http://localhost:9090/realms/rental-equipment-app"
+
 application:
   file:
     uploads:
@@ -35,9 +36,10 @@ application:
     jwt:
       secret-key: zFeN7VFm3Lq6asqS4MbpH8D7vlfu7gO9cuvZmxkax5aW1J4u4Ko5V6zQGkF1EY6u
       expiration: 86400000
+
 server:
   port: 80
 
 mailing:
   frontend:
-    activation-url: http://localhost:4200/activate-account
+    activation-url: http://rentalequipmentapp.org/activate-account
