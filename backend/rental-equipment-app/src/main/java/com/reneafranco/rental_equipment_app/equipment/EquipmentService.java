@@ -224,4 +224,22 @@ public class EquipmentService {
                 allBorrowedEquipment.isLast()
         );
     }
+
+    public void deleteEquipment(Integer equipmentId, Authentication connectedUser) {
+        Equipment equipment = equipmentRepository.findById(equipmentId)
+                .orElseThrow(() -> new EntityNotFoundException("No equipment found with ID:: " + equipmentId));
+
+        User user = (User) connectedUser.getPrincipal();
+
+        if (!Objects.equals(equipment.getOwner().getId(), user.getId())) {
+            throw new OperationNotPermittedException("You cannot delete equipment that you do not own");
+        }
+
+        boolean isBorrowed = transactionHistoryRepository.isAlreadyBorrowed(equipmentId);
+        if (isBorrowed) {
+            throw new OperationNotPermittedException("You cannot delete equipment that is currently borrowed");
+        }
+
+        equipmentRepository.delete(equipment);
+    }
 }

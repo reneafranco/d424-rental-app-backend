@@ -117,4 +117,13 @@ public class EquipmentController {
         return ResponseEntity.accepted().build();
     }
 
+    @DeleteMapping("/{equipment-id}")
+    public ResponseEntity<Void> deleteEquipment(
+            @PathVariable("equipment-id") Integer equipmentId,
+            Authentication connectedUser
+    ) {
+        service.deleteEquipment(equipmentId, connectedUser);
+        return ResponseEntity.noContent().build();
+    }
+
 }
