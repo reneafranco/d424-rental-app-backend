@@ -76,11 +76,12 @@ public class EquipmentController {
     }
 
     @PatchMapping("/archived/{equipment-id}")
-    public ResponseEntity<Integer> updateArchivedStatus(
+    public ResponseEntity<?> updateArchivedStatus(
             @PathVariable("equipment-id") Integer equipmentId,
             Authentication connectedUser
     ) {
-        return ResponseEntity.ok(service.updateArchivedStatus(equipmentId, connectedUser));
+        service.deleteEquipment(equipmentId, connectedUser);
+        return ResponseEntity.noContent().build();
     }
 
     @PostMapping("borrow/{equipment-id}")
@@ -117,13 +118,12 @@ public class EquipmentController {
         return ResponseEntity.accepted().build();
     }
 
-    @DeleteMapping("/{equipment-id}")
-    public ResponseEntity<Void> deleteEquipment(
+    @DeleteMapping("/delete/{equipment-id}")
+    public ResponseEntity<?> deleteEquipment(
             @PathVariable("equipment-id") Integer equipmentId,
             Authentication connectedUser
     ) {
         service.deleteEquipment(equipmentId, connectedUser);
         return ResponseEntity.noContent().build();
     }
-
 }
