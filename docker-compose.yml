@@ -24,29 +24,29 @@ services:
       - spring-demo
     command:
       - "start-dev"
-  backend:
-    container_name: rental-backend
-    build:
-      context: ./backend/rental-equipment-app
-      dockerfile: Dockerfile
-    ports:
-      - "80:80"
-    networks:
-      - spring-demo
-    restart: unless-stopped
-    depends_on:
-      - postgres
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/rental-equipment-app
-      SPRING_DATASOURCE_USERNAME: username
-      SPRING_DATASOURCE_PASSWORD: password
-      SPRING_MAIL_HOST: smtp.gmail.com
-      SPRING_MAIL_PORT: 587
-      SPRING_MAIL_USERNAME: reneadonayfranco@gmail.com
-      SPRING_MAIL_PASSWORD:
-      SPRING_MAIL_PROPERTIES_MAIL_SMTP_AUTH: "true"
-      SPRING_MAIL_PROPERTIES_MAIL_SMTP_STARTTLS_ENABLE: "true"
-      SPRING_PROFILES_ACTIVE: dev
+#  backend:
+#    container_name: rental-backend
+#    build:
+#      context: ./backend/rental-equipment-app
+#      dockerfile: Dockerfile
+#    ports:
+#      - "80:80"
+#    networks:
+#      - spring-demo
+#    restart: unless-stopped
+#    depends_on:
+#      - postgres
+#    environment:
+#      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/rental-equipment-app
+#      SPRING_DATASOURCE_USERNAME: username
+#      SPRING_DATASOURCE_PASSWORD: password
+#      SPRING_MAIL_HOST: smtp.gmail.com
+#      SPRING_MAIL_PORT: 587
+#      SPRING_MAIL_USERNAME: reneadonayfranco@gmail.com
+#      SPRING_MAIL_PASSWORD:
+#      SPRING_MAIL_PROPERTIES_MAIL_SMTP_AUTH: "true"
+#      SPRING_MAIL_PROPERTIES_MAIL_SMTP_STARTTLS_ENABLE: "true"
+#      SPRING_PROFILES_ACTIVE: dev
 networks:
   spring-demo:
     driver: bridge
